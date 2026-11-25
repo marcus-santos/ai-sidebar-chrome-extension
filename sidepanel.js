@@ -1,33 +1,38 @@
-const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
-const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+const assistantSelect = document.querySelector("#assistant-select");
+const panels = Array.from(document.querySelectorAll("[data-service]"));
+const assistantNames = new Set(panels.map((panel) => panel.dataset.service));
+let selectionChanged = false;
 
-function selectTab(selectedTab) {
-  const selectedName = selectedTab.dataset.tab;
-
-  for (const tab of tabs) {
-    const isSelected = tab === selectedTab;
-    tab.setAttribute("aria-selected", String(isSelected));
-    tab.tabIndex = isSelected ? 0 : -1;
-  }
-
+function selectAssistant(name) {
+  assistantSelect.value = name;
   for (const panel of panels) {
-    panel.hidden = panel.dataset.panel !== selectedName;
+    const isSelected = panel.dataset.service === name;
+    panel.hidden = !isSelected;
   }
 }
 
-for (const tab of tabs) {
-  tab.addEventListener("click", () => selectTab(tab));
-  tab.addEventListener("keydown", (event) => {
-    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
-      return;
-    }
+assistantSelect.addEventListener("change", async () => {
+  selectionChanged = true;
+  const selectedAssistant = assistantSelect.value;
+  selectAssistant(selectedAssistant);
 
-    event.preventDefault();
-    const direction = event.key === "ArrowRight" ? 1 : -1;
-    const currentIndex = tabs.indexOf(tab);
-    const nextIndex = (currentIndex + direction + tabs.length) % tabs.length;
-    const nextTab = tabs[nextIndex];
-    selectTab(nextTab);
-    nextTab.focus();
-  });
+  try {
+    await chrome.storage.local.set({ selectedAssistant });
+  } catch (error) {
+    console.error("Failed to save the selected assistant.", error);
+  }
+});
+
+async function restoreAssistant() {
+  try {
+    const { selectedAssistant } = await chrome.storage.local.get("selectedAssistant");
+    if (!selectionChanged) {
+      const assistant = assistantNames.has(selectedAssistant) ? selectedAssistant : "chatgpt";
+      selectAssistant(assistant);
+    }
+  } catch (error) {
+    console.error("Failed to restore the selected assistant.", error);
+  }
 }
+
+restoreAssistant();

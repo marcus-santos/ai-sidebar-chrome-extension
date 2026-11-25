@@ -4,70 +4,44 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AI Sidebar</title>
+    <icon></icon>
     <link rel="stylesheet" href="sidepanel.css">
     <script src="sidepanel.js" defer></script>
   </head>
   <body>
     <header class="topbar">
-      <nav class="tabs" role="tablist" aria-label="AI assistants">
-        <button
-          id="tab-chatgpt"
-          class="tab"
-          type="button"
-          role="tab"
-          aria-selected="true"
-          aria-controls="panel-chatgpt"
-          tabindex="0"
-          data-tab="chatgpt"
-        >ChatGPT</button>
-        <button
-          id="tab-claude"
-          class="tab"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="panel-claude"
-          tabindex="-1"
-          data-tab="claude"
-        >Claude</button>
-        <button
-          id="tab-gemini"
-          class="tab"
-          type="button"
-          role="tab"
-          aria-selected="false"
-          aria-controls="panel-gemini"
-          tabindex="-1"
-          data-tab="gemini"
-        >Gemini</button>
-      </nav>
+      <label id="assistant-label" for="assistant-select">Assistente</label>
+      <div class="select-shell">
+        <select id="assistant-select" aria-controls="assistant-panel">
+          <option value="chatgpt">ChatGPT</option>
+          <option value="claude">Claude</option>
+          <option value="gemini">Gemini</option>
+        </select>
+      </div>
     </header>
     <main class="panels">
       <section
-        id="panel-chatgpt"
+        id="assistant-panel"
         class="panel"
-        role="tabpanel"
-        aria-labelledby="tab-chatgpt"
-        data-panel="chatgpt"
+        aria-label="ChatGPT"
+        data-service="chatgpt"
       >
         <iframe src="https://chatgpt.com" title="ChatGPT"></iframe>
       </section>
       <section
-        id="panel-claude"
+        id="assistant-panel-claude"
         class="panel"
-        role="tabpanel"
-        aria-labelledby="tab-claude"
-        data-panel="claude"
+        aria-label="Claude"
+        data-service="claude"
         hidden
       >
         <iframe src="https://claude.ai" title="Claude"></iframe>
       </section>
       <section
-        id="panel-gemini"
+        id="assistant-panel-gemini"
         class="panel"
-        role="tabpanel"
-        aria-labelledby="tab-gemini"
-        data-panel="gemini"
+        aria-label="Gemini"
+        data-service="gemini"
         hidden
       >
         <iframe src="https://gemini.google.com" title="Gemini"></iframe>
