@@ -10,9 +10,10 @@ browser side panel.
 3. Select **Load unpacked** and choose this repository directory.
 4. Click the extension icon to open the side panel.
 
-Use the dropdown at the top of the panel to switch between the three assistants.
-Your last selection is saved in the browser and restored the next time the panel
-opens.
+Use the floating assistant button on the right side of the panel to switch
+between the three assistants. Its compact menu overlays the page rather than
+resizing it. Your last selection is saved in the browser and restored the next
+time the panel opens.
 
 ## Embedding limitation
 

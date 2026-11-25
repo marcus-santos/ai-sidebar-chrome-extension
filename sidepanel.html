@@ -9,16 +9,6 @@
     <script src="sidepanel.js" defer></script>
   </head>
   <body>
-    <header class="topbar">
-      <label id="assistant-label" for="assistant-select">Assistente</label>
-      <div class="select-shell">
-        <select id="assistant-select" aria-controls="assistant-panel">
-          <option value="chatgpt">ChatGPT</option>
-          <option value="claude">Claude</option>
-          <option value="gemini">Gemini</option>
-        </select>
-      </div>
-    </header>
     <main class="panels">
       <section
         id="assistant-panel"
@@ -47,5 +37,42 @@
         <iframe src="https://gemini.google.com" title="Gemini"></iframe>
       </section>
     </main>
+    <div class="assistant-switcher">
+      <button
+        id="assistant-toggle"
+        class="assistant-toggle"
+        type="button"
+        aria-label="Abrir menu de assistentes. Atual: ChatGPT"
+        aria-haspopup="menu"
+        aria-expanded="false"
+        aria-controls="assistant-menu"
+      >
+        <img id="current-assistant-icon" src="icons/chatgpt.svg" alt="">
+        <svg class="toggle-arrow" viewBox="0 0 16 16" aria-hidden="true">
+          <path d="m4 6 4 4 4-4" />
+        </svg>
+      </button>
+      <div
+        id="assistant-menu"
+        class="assistant-menu"
+        role="menu"
+        aria-label="Selecionar assistente"
+        aria-hidden="true"
+        inert
+      >
+        <button class="assistant-option" type="button" role="menuitemradio" aria-checked="true" data-service="chatgpt">
+          <img class="service-icon" src="icons/chatgpt.svg" alt="">
+          <span>ChatGPT</span>
+        </button>
+        <button class="assistant-option" type="button" role="menuitemradio" aria-checked="false" data-service="claude">
+          <img class="service-icon" src="icons/claude.svg" alt="">
+          <span>Claude</span>
+        </button>
+        <button class="assistant-option" type="button" role="menuitemradio" aria-checked="false" data-service="gemini">
+          <img class="service-icon" src="icons/icon48.png" alt="">
+          <span>Gemini</span>
+        </button>
+      </div>
+    </div>
   </body>
 </html>
