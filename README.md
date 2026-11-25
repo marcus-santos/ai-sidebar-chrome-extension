@@ -8,7 +8,10 @@ browser side panel.
 1. Open `chrome://extensions` in Chromium.
 2. Enable **Developer mode**.
 3. Select **Load unpacked** and choose this repository directory.
-4. Click the extension icon to open the side panel.
+4. Click the extension icon to open or close the side panel.
+
+The `Ctrl+Shift+Y` shortcut (or `Command+Shift+Y` on macOS) toggles the panel
+too. You can change it at `chrome://extensions/shortcuts`.
 
 Use the floating assistant button on the right side of the panel to switch
 between the three assistants. Its compact menu overlays the page rather than
