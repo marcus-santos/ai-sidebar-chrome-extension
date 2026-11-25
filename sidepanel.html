@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Sidebar</title>
+    <link rel="stylesheet" href="sidepanel.css">
+    <script src="sidepanel.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <nav class="tabs" role="tablist" aria-label="AI assistants">
+        <button
+          id="tab-chatgpt"
+          class="tab"
+          type="button"
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-chatgpt"
+          tabindex="0"
+          data-tab="chatgpt"
+        >ChatGPT</button>
+        <button
+          id="tab-claude"
+          class="tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-claude"
+          tabindex="-1"
+          data-tab="claude"
+        >Claude</button>
+        <button
+          id="tab-gemini"
+          class="tab"
+          type="button"
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-gemini"
+          tabindex="-1"
+          data-tab="gemini"
+        >Gemini</button>
+      </nav>
+    </header>
+    <main class="panels">
+      <section
+        id="panel-chatgpt"
+        class="panel"
+        role="tabpanel"
+        aria-labelledby="tab-chatgpt"
+        data-panel="chatgpt"
+      >
+        <iframe src="https://chatgpt.com" title="ChatGPT"></iframe>
+      </section>
+      <section
+        id="panel-claude"
+        class="panel"
+        role="tabpanel"
+        aria-labelledby="tab-claude"
+        data-panel="claude"
+        hidden
+      >
+        <iframe src="https://claude.ai" title="Claude"></iframe>
+      </section>
+      <section
+        id="panel-gemini"
+        class="panel"
+        role="tabpanel"
+        aria-labelledby="tab-gemini"
+        data-panel="gemini"
+        hidden
+      >
+        <iframe src="https://gemini.google.com" title="Gemini"></iframe>
+      </section>
+    </main>
+  </body>
+</html>
