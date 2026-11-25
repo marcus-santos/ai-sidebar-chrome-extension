@@ -7,6 +7,13 @@
     "sidePanel",
     "declarativeNetRequest"
   ],
+  "host_permissions": [
+    "*://*.chatgpt.com/*",
+    "*://*.openai.com/*",
+    "*://*.claude.ai/*",
+    "*://*.gemini.google.com/*",
+    "*://*.google.com/*"
+  ],
   "background": {
     "service_worker": "service-worker.js"
   },

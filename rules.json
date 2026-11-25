@@ -11,7 +11,7 @@
     },
     "condition": {
       "urlFilter": "||chatgpt.com",
-      "resourceTypes": ["sub_frame"]
+      "resourceTypes": ["main_frame", "sub_frame"]
     }
   },
   {
@@ -26,7 +26,7 @@
     },
     "condition": {
       "urlFilter": "||claude.ai",
-      "resourceTypes": ["sub_frame"]
+      "resourceTypes": ["main_frame", "sub_frame"]
     }
   },
   {
@@ -41,7 +41,22 @@
     },
     "condition": {
       "urlFilter": "||gemini.google.com",
-      "resourceTypes": ["sub_frame"]
+      "resourceTypes": ["main_frame", "sub_frame"]
+    }
+  },
+  {
+    "id": 4,
+    "priority": 1,
+    "action": {
+      "type": "modifyHeaders",
+      "responseHeaders": [
+        { "header": "x-frame-options", "operation": "remove" },
+        { "header": "content-security-policy", "operation": "remove" }
+      ]
+    },
+    "condition": {
+      "urlFilter": "||accounts.google.com",
+      "resourceTypes": ["main_frame", "sub_frame"]
     }
   }
 ]
